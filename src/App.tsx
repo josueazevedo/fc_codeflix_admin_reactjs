@@ -6,6 +6,9 @@ import Header from './components/Header/Header';
 import { Layout } from './components/Layout/Layout';
 import { appTheme } from './config/theme';
 import { Route, Routes } from 'react-router-dom';
+import CategoryList from './features/categories/CategoryList/CategoryList';
+import CategoryCreate from './features/categories/CategoryCreate/CategoryCreate';
+import CategoryEdit from './features/categories/CategoryEdit/CategoryEdit';
 
 function App() {
   return (
@@ -19,9 +22,13 @@ function App() {
       >
         <Header />
         <Layout>
-         Teste
          <Routes>
-            <Route  />
+            <Route path='/' element={<CategoryList />} />
+            <Route path='/categories' element={<CategoryList />} />
+            <Route path='/categories/create' element={<CategoryCreate />} />
+            <Route path='/categories/edit/:id' element={<CategoryEdit />} />
+
+            <Route path='*' element={<h1>Page not found</h1>}/>
          </Routes>
         </Layout>
       </Box>
