@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 
 import { DataGrid, GridColDef, GridRenderCellParams, GridRowsProp, GridToolbar } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useSnackbar } from 'notistack';
 
 export const CategoryList = () => {
 
   const categories = useAppSelector(selectCategories);
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const rows: GridRowsProp = categories.map(category => ({
     id: category.id,
@@ -73,6 +75,7 @@ export const CategoryList = () => {
 
   const handlerDeleteCategory = (id: string) => {
     dispatch(deleteCategory(id));
+    enqueueSnackbar("Category deleted successfully!", { variant: 'success'});
   }
 
   function renderIsActiveCell(row: GridRenderCellParams) {

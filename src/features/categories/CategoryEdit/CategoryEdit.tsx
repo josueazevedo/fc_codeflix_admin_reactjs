@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { Category, selectCategoryById, updateCategory } from '../categorySlice';
 import React, { useState } from 'react';
 import { CategoryForm } from '../components/CategoryForm/CategoryForm';
+import { useSnackbar } from 'notistack';
 
 
 export const CategoryEdit = () =>  {
@@ -12,6 +13,7 @@ export const CategoryEdit = () =>  {
   const [categoryState, setCategoryState] = useState<Category>(category);
   const [isDisabled, setIsDisabled] = useState(false);
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,6 +28,7 @@ export const CategoryEdit = () =>  {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(updateCategory(categoryState));
+    enqueueSnackbar("Success updating category!", { variant: 'success'});
   }
 
   return (
