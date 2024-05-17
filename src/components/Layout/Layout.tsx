@@ -11,7 +11,7 @@ export const Layout: React.FC<LayoutProps> = ({children}) => {
         <Container
             maxWidth="lg"
             sx={{
-                mt: 4, mb: 4
+                mt: 4, mb: 4,
             }}
         >
             {children}

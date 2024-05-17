@@ -6,9 +6,9 @@ import Header from './components/Header/Header';
 import { Layout } from './components/Layout/Layout';
 import { appTheme } from './config/theme';
 import { Route, Routes } from 'react-router-dom';
-import CategoryList from './features/categories/CategoryList/CategoryList';
+import { CategoryList } from './features/categories/CategoryList/CategoryList';
 import CategoryCreate from './features/categories/CategoryCreate/CategoryCreate';
-import CategoryEdit from './features/categories/CategoryEdit/CategoryEdit';
+import { CategoryEdit } from './features/categories/CategoryEdit/CategoryEdit';
 
 function App() {
   return (
