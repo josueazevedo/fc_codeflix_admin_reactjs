@@ -1,10 +1,11 @@
 import { Box, Paper, Typography } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { Category, selectCategoryById, updateCategory } from '../categorySlice';
+import { selectCategoryById, updateCategory } from '../categorySlice';
 import React, { useState } from 'react';
 import { CategoryForm } from '../components/CategoryForm/CategoryForm';
 import { useSnackbar } from 'notistack';
+import { Category } from '../../../types/Category';
 
 
 export const CategoryEdit = () =>  {

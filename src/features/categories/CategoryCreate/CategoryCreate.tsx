@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Category, createCategory } from '../categorySlice';
+import { createCategory } from '../categorySlice';
 import { Box, Paper, Typography } from '@mui/material';
 import { CategoryForm } from '../components/CategoryForm/CategoryForm';
 import { useAppDispatch } from '../../../app/hooks';
 import { useSnackbar } from 'notistack';
+import { Category } from '../../../types/Category';
 
 export default function CategoryCreate() {
   const [category, setCategory] = useState<Category>({
