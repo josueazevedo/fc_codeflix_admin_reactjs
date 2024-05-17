@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Category } from '../categorySlice';
+import { Category, createCategory } from '../categorySlice';
 import { Box, Paper, Typography } from '@mui/material';
 import { CategoryForm } from '../components/CategoryForm/CategoryForm';
+import { useAppDispatch } from '../../../app/hooks';
 
 export default function CategoryCreate() {
   const [category, setCategory] = useState<Category>({
@@ -15,10 +16,22 @@ export default function CategoryCreate() {
   });
 
   const [isDisabled, setIsDisabled] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const handleChange = () => {};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setCategory({...category, [name]: value});
+  };
 
-  const handleToggle = () => {};
+  const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setCategory({...category, [name]: checked});
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(createCategory(category));
+  }
 
   return (
     <Box>
@@ -33,7 +46,7 @@ export default function CategoryCreate() {
           category={category}
           isDisabled={isDisabled}
           isLoading={false}
-          handleSubmit={() => {}}
+          handleSubmit={handleSubmit}
           handleChange={handleChange}
           handleToggle={handleToggle}
         />
