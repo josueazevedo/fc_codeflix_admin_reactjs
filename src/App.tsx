@@ -18,7 +18,7 @@ function App() {
         <Box 
           component="main"
           sx={{
-            height: '100vh',
+            minHeight: '100vh',
             backgroundColor: (theme) => theme.palette.grey[900]
           }}
         >

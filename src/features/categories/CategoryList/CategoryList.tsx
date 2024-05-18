@@ -87,7 +87,7 @@ export const CategoryList = () => {
   return (
    <Box
       maxWidth="lg"
-      sx={{mt: 4, mb: 4}}
+      sx={{mt: 4}}
    >
     <Box display="flex" justifyContent="flex-end">
         <Button
@@ -101,7 +101,7 @@ export const CategoryList = () => {
         </Button>
 
       </Box>
-      <Box sx={{ display: "flex", height: 500, }}>
+      <Box sx={{ display: "flex", height: 500, pb: 4}}>
         <DataGrid 
               rows={rows} 
               columns={columns} 
