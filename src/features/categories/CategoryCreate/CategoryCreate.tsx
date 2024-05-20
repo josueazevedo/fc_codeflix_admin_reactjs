@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { createCategory } from '../categorySlice';
-import { Box, Paper, Typography } from '@mui/material';
-import { CategoryForm } from '../components/CategoryForm/CategoryForm';
-import { useAppDispatch } from '../../../app/hooks';
-import { useSnackbar } from 'notistack';
-import { Category } from '../../../types/Category';
+import { useEffect, useState } from "react";
+import { useCreateCategoyMutation } from "../categorySlice";
+import { Box, Paper, Typography } from "@mui/material";
+import { CategoryForm } from "../components/CategoryForm/CategoryForm";
+import { useSnackbar } from "notistack";
+import { Category } from "../../../types/Category";
 
 export default function CategoryCreate() {
+  const [createCategory, statusCreateCategory] = useCreateCategoyMutation();
   const [category, setCategory] = useState<Category>({
     id: "",
     name: "",
@@ -14,41 +14,47 @@ export default function CategoryCreate() {
     is_active: false,
     created_at: "",
     deleted_at: "",
-    updated_at: ""
+    updated_at: "",
   });
 
-  const [isDisabled, setIsDisabled] = useState(false);
-  const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setCategory({...category, [name]: value});
+    setCategory({ ...category, [name]: value });
   };
 
   const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
-    setCategory({...category, [name]: checked});
+    setCategory({ ...category, [name]: checked });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(createCategory(category));
-    enqueueSnackbar("Category created successfully!", { variant: 'success'});
-  }
+    await createCategory(category);
+  };
+
+  useEffect(() => {
+    if (statusCreateCategory.isSuccess) {
+      enqueueSnackbar("Category created", { variant: "success" });
+    }
+    if (statusCreateCategory.isError) {
+      enqueueSnackbar("Category not created", { variant: "error" });
+    }
+  }, [statusCreateCategory]);
 
   return (
     <Box>
       <Paper>
         <Box p={2}>
           <Box mb={2}>
-            <Typography variant='h4'>Create Category</Typography>
+            <Typography variant="h4">Create Category</Typography>
           </Box>
         </Box>
 
-        <CategoryForm 
+        <CategoryForm
           category={category}
-          isDisabled={isDisabled}
+          isDisabled={statusCreateCategory.isLoading}
           isLoading={false}
           handleSubmit={handleSubmit}
           handleChange={handleChange}
@@ -56,5 +62,5 @@ export default function CategoryCreate() {
         />
       </Paper>
     </Box>
-  )
+  );
 }
