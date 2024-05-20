@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useCreateCategoyMutation } from "../categorySlice";
+import { useCreateCategoyMutation } from "../../categorySlice";
 import { Box, Paper, Typography } from "@mui/material";
-import { CategoryForm } from "../components/CategoryForm/CategoryForm";
+import { CategoryForm } from "../../components/CategoryForm/CategoryForm";
 import { useSnackbar } from "notistack";
-import { Category } from "../../../types/Category";
+import { Category } from "../../../../types/Category";
 
 export default function CategoryCreate() {
   const [createCategory, statusCreateCategory] = useCreateCategoyMutation();

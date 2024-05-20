@@ -1,12 +1,12 @@
 import {
   useDeleteCategoryMutation,
   useGetCategoriesQuery,
-} from "../categorySlice";
+} from "../../categorySlice";
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
-import { CategoryTable } from "../components/CategoryTable/CategoryTable";
+import { CategoryTable } from "../../components/CategoryTable/CategoryTable";
 import { GridFilterModel } from "@mui/x-data-grid";
 
 export const CategoryList = () => {

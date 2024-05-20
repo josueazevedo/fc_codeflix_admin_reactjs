@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import {
   useGetCategoryQuery,
   useUpdateCategoryMutation,
-} from "../categorySlice";
+} from "../../categorySlice";
 import React, { useEffect, useState } from "react";
-import { CategoryForm } from "../components/CategoryForm/CategoryForm";
+import { CategoryForm } from "../../components/CategoryForm/CategoryForm";
 import { useSnackbar } from "notistack";
-import { Category } from "../../../types/Category";
+import { Category } from "../../../../types/Category";
 
 export const CategoryEdit = () => {
   const id = useParams().id || "";
