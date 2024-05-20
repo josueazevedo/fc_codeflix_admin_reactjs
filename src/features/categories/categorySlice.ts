@@ -10,6 +10,16 @@ import { apiSlice } from "../api/apiSlice";
 
 const endpointUrl = "/categories";
 
+export const categoryInitialState = {
+  id: "",
+  name: "",
+  description: "",
+  is_active: false,
+  created_at: "",
+  deleted_at: "",
+  updated_at: "",
+};
+
 function parseQueryParams(params: CategoryParams) {
   const query = new URLSearchParams();
 
@@ -109,7 +119,7 @@ const categories: Category[] = [
 
 export const initialState = [...categories];
 
-const categoriesSlide = createSlice({
+const categoriesSlice = createSlice({
   name: "categories",
   initialState,
   reducers: {
@@ -136,7 +146,7 @@ export const selectCategoryById = (state: RootState, id: string) => {
 
 //actions
 export const { createCategory, updateCategory, deleteCategory } =
-  categoriesSlide.actions;
+  categoriesSlice.actions;
 
 //api
 export const {
@@ -147,6 +157,6 @@ export const {
   useGetCategoryQuery,
 } = categoriesApiSlice;
 
-const categoriesReducer = categoriesSlide.reducer;
+const categoriesReducer = categoriesSlice.reducer;
 
 export default categoriesReducer;

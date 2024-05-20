@@ -1,6 +1,7 @@
 import { Box, Paper, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import {
+  categoryInitialState,
   useGetCategoryQuery,
   useUpdateCategoryMutation,
 } from "../../categorySlice";
@@ -13,15 +14,8 @@ export const CategoryEdit = () => {
   const id = useParams().id || "";
   const { data: category, isFetching } = useGetCategoryQuery({ id });
   const [updateCategory, updateCategoryStatus] = useUpdateCategoryMutation();
-  const [categoryState, setCategoryState] = useState<Category>({
-    id: "",
-    name: "",
-    description: "",
-    is_active: false,
-    created_at: "",
-    deleted_at: "",
-    updated_at: "",
-  });
+  const [categoryState, setCategoryState] =
+    useState<Category>(categoryInitialState);
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +46,7 @@ export const CategoryEdit = () => {
     if (updateCategoryStatus.isError) {
       enqueueSnackbar("Category not updated", { variant: "error" });
     }
-  }, [updateCategoryStatus]);
+  }, [updateCategoryStatus, enqueueSnackbar]);
 
   return (
     <Box>
@@ -65,8 +59,7 @@ export const CategoryEdit = () => {
 
         <CategoryForm
           category={categoryState}
-          isDisabled={updateCategoryStatus.isLoading}
-          isLoading={false}
+          isDisabled={updateCategoryStatus.isLoading || isFetching}
           handleSubmit={handleSubmit}
           handleChange={handleChange}
           handleToggle={handleToggle}
