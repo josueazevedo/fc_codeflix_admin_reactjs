@@ -13,6 +13,9 @@ import { CategoryList } from "./features/categories/pages/CategoryList/CategoryL
 import { CastMemberList } from "./features/cast-member/pages/CastMemberList/CastMemberList";
 import { CastMemberCreate } from "./features/cast-member/pages/CastMemberCreate/CastMemberCreate";
 import { CastMemberEdit } from "./features/cast-member/pages/CastMemberEdit/CastMemberEdit";
+import { GenreCreate } from "./features/genre/pages/GenreCreate/GenreCreate";
+import { GenreEdit } from "./features/genre/pages/GenreEdit/GenreEdit";
+import { GenreList } from "./features/genre/pages/GenreList/GenreList";
 
 function App() {
   return (
@@ -45,6 +48,10 @@ function App() {
                 path="/cast-members/edit/:id"
                 element={<CastMemberEdit />}
               />
+
+              <Route path="/gentes/create" element={<GenreCreate />} />
+              <Route path="/gentes/edit" element={<GenreEdit />} />
+              <Route path="/gentes" element={<GenreList />} />
 
               <Route path="*" element={<h1>Page not found</h1>} />
             </Routes>
