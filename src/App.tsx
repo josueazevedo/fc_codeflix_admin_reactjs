@@ -10,6 +10,9 @@ import CategoryCreate from "./features/categories/pages/CategoryCreate/CategoryC
 import { CategoryEdit } from "./features/categories/pages/CategoryEdit/CategoryEdit";
 import { SnackbarProvider } from "notistack";
 import { CategoryList } from "./features/categories/pages/CategoryList/CategoryList";
+import { CastMemberList } from "./features/cast-member/pages/CastMemberList/CastMemberList";
+import { CastMemberCreate } from "./features/cast-member/pages/CastMemberCreate/CastMemberCreate";
+import { CastMemberEdit } from "./features/cast-member/pages/CastMemberEdit/CastMemberEdit";
 
 function App() {
   return (
@@ -32,6 +35,16 @@ function App() {
               <Route path="/categories" element={<CategoryList />} />
               <Route path="/categories/create" element={<CategoryCreate />} />
               <Route path="/categories/edit/:id" element={<CategoryEdit />} />
+
+              <Route path="/cast-members" element={<CastMemberList />} />
+              <Route
+                path="/cast-members/create"
+                element={<CastMemberCreate />}
+              />
+              <Route
+                path="/cast-members/edit/:id"
+                element={<CastMemberEdit />}
+              />
 
               <Route path="*" element={<h1>Page not found</h1>} />
             </Routes>
