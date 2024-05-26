@@ -15,7 +15,6 @@ import { CategoryList } from "./CategoryList";
 
 export const handlers = [
   rest.get(`${baseUrl}/categories`, (req, res, ctx) => {
-    console.log(req.url);
     if (req.url.searchParams.get("page") === "2") {
       return res(ctx.json(categoryResponsePage2), ctx.delay(150));
     }
@@ -120,7 +119,7 @@ describe("CategoryList", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      const name = screen.getByText("Category deleted");
+      const name = screen.getByText("Category deleted successfully!");
       expect(name).toBeInTheDocument();
     });
   });
@@ -146,7 +145,7 @@ describe("CategoryList", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      const name = screen.getByText("Category not deleted");
+      const name = screen.getByText("Error deleting category!");
       expect(name).toBeInTheDocument();
     });
   });

@@ -649,6 +649,7 @@ exports[`CategoryTable should render CategoryTable with Inactive value 1`] = `
                   <button
                     aria-label="delete"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeMedium css-1gws2xf-MuiButtonBase-root-MuiIconButton-root"
+                    data-testid="delete-button"
                     tabindex="0"
                     type="button"
                   >
@@ -1444,6 +1445,7 @@ exports[`CategoryTable should render CategoryTable with data 1`] = `
                   <button
                     aria-label="delete"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeMedium css-1gws2xf-MuiButtonBase-root-MuiIconButton-root"
+                    data-testid="delete-button"
                     tabindex="0"
                     type="button"
                   >
