@@ -3,10 +3,15 @@ import { Box } from "@mui/system";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { genreInintalState, useGetCaTegoriesQuery, useGetGenreQuery, useUpdateGenreMutation } from "../../genreSlice";
+import {
+  genreInintalState,
+  useGetCaTegoriesQuery,
+  useGetGenreQuery,
+  useUpdateGenreMutation,
+} from "../../genreSlice";
 import { Genre } from "../../../../types/Genres";
 import { mapGenreToForm } from "../../utils";
-import { GenreForm } from "../../components/GenreFrom/GenreFrom";
+import { GenreForm } from "../../components/GenreForm/GenreForm";
 
 export const GenreEdit = () => {
   const id = useParams<{ id: string }>().id as string;

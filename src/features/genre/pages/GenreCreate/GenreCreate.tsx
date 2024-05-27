@@ -1,9 +1,13 @@
 import { Box, Paper, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
-import { genreInintalState, useCreateGenreMutation, useGetCaTegoriesQuery } from "../../genreSlice";
+import {
+  genreInintalState,
+  useCreateGenreMutation,
+  useGetCaTegoriesQuery,
+} from "../../genreSlice";
 import { Genre } from "../../../../types/Genres";
-import { GenreForm } from "../../components/GenreFrom/GenreFrom";
+import { GenreForm } from "../../components/GenreForm/GenreForm";
 import { mapGenreToForm } from "../../utils";
 
 export const GenreCreate = () => {
