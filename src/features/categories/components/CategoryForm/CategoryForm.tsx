@@ -38,9 +38,10 @@ export const CategoryForm = ({
                 required
                 name="name"
                 label="Name"
-                value={category.name}
+                value={category.name || ""}
                 disabled={isDisabled}
                 onChange={handleChange}
+                inputProps={{ "data-testid": "name" }}
               />
             </FormControl>
           </Grid>
@@ -51,9 +52,10 @@ export const CategoryForm = ({
                 required
                 name="description"
                 label="Description"
-                value={category.description}
+                value={category.description || ""}
                 disabled={isDisabled}
                 onChange={handleChange}
+                inputProps={{ "data-testid": "description" }}
               />
             </FormControl>
           </Grid>
