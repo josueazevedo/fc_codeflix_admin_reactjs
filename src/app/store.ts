@@ -10,6 +10,10 @@ import categoriesReducer, {
 } from "../features/categories/categorySlice";
 import { apiSlice } from "../features/api/apiSlice";
 import { castMembersApiSlice } from "../features/cast-member/castMemberSlice";
+import { uploadReducer } from "../features/uploads/uploadSlice";
+import { uploadQueue } from "../middleware/uploadQueue";
+import { videosSlice } from "../features/videos/videoSlice";
+import { genreSlice } from "../features/genre/genreSlice";
 
 // const apiReducer = { [apiSlice.reducerPath]: apiSlice.reducer };
 
@@ -18,6 +22,9 @@ const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
   [categoriesApiSlice.reducerPath]: apiSlice.reducer,
   [castMembersApiSlice.reducerPath]: apiSlice.reducer,
+  [videosSlice.reducerPath]: apiSlice.reducer,
+  [genreSlice.reducerPath]: apiSlice.reducer,
+  uploadSlice: uploadReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
@@ -25,7 +32,9 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
     reducer: rootReducer,
     preloadedState,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(apiSlice.middleware),
+      getDefaultMiddleware()
+        .prepend(uploadQueue.middleware)
+        .concat(apiSlice.middleware),
   });
 };
 
